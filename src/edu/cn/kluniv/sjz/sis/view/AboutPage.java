@@ -18,7 +18,7 @@ public class AboutPage extends JFrame {
 		infoString="°æ±¾: 0.0.1 \r\n"
 				+ "Author: TapuFini\r\n"
 				+ "ÈÕÆÚ: 2022-06-20T20:10:58.283Z\r\n"
-				+ "Github: https://github.com/itqihou/DBSLearning\r\n";
+				+ "Github: https://github.com/itqihou/DBSLearningCode\r\n";
 		add(new JLabel(
 				"<html><h1>About Page</h1></html>"),
 				BorderLayout.NORTH);

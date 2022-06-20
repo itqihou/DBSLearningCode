@@ -10,7 +10,7 @@ public class StudentViewTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		StudentDAO stuDAO=new StudentDAO(dbc);
-		stuDAO.selectByNo("2017001");
+		stuDAO.selectByNo("2020101");
 		new StudentView();
 		
 		dbc.close();

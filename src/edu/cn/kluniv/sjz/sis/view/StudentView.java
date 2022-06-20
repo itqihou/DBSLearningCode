@@ -39,8 +39,9 @@ public class StudentView {
 	private ResultSet rsPersonInfo;
 	private ResultSet rsGrade;
 	private ResultSet rsCourPlan;
-	// 
+	//
 	private String account;
+
 	public StudentView() {
 		initialize();
 		myEvent();
@@ -58,175 +59,170 @@ public class StudentView {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 	}
-	
-	
+
 	private void initialize() {
-		frame=new JFrame("学生端界面");
+		frame = new JFrame("学生端界面");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(10, 10));
-		// 
-		tree=new JTree();
-		tree.getSelectionModel()
-		.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		// 
-		rootTreeNode=new DefaultMutableTreeNode("学生端功能栏");
-		// 
-		tnSelectPersonInfo=new DefaultMutableTreeNode("查询个人信息");
-		// 
-		tnSelectCoursePlan=new DefaultMutableTreeNode("查询培养方案");
 		//
-		tnSelectGrade=new DefaultMutableTreeNode("查询成绩");
+		tree = new JTree();
+		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		//
-		tnModifyPasswd=new DefaultMutableTreeNode("修改密码");
+		rootTreeNode = new DefaultMutableTreeNode("学生端功能栏");
 		//
-		rootTreeNode.add(tnSelectPersonInfo);
+		tnSelectPersonInfo = new DefaultMutableTreeNode("查询个人信息");
+		//
+		tnSelectCoursePlan = new DefaultMutableTreeNode("查询培养方案");
+		//
+		tnSelectGrade = new DefaultMutableTreeNode("查询成绩");
+		//
+		tnModifyPasswd = new DefaultMutableTreeNode("修改密码");
+		//
+		rootTreeNode.add(tnSelectPersonInfo);		
 		rootTreeNode.add(tnSelectCoursePlan);
 		rootTreeNode.add(tnSelectGrade);
 		rootTreeNode.add(tnModifyPasswd);
-		// 
-		treeModel=new DefaultTreeModel(rootTreeNode);
-		// 
+		//
+		treeModel = new DefaultTreeModel(rootTreeNode);
+		//
 		tree.setModel(treeModel);
-		// 
-		frame.getContentPane().add(tree,BorderLayout.WEST);
-		// 
-		labelBG=new JLabel();
+		//
+		frame.getContentPane().add(tree, BorderLayout.WEST);
+		//
+		labelBG = new JLabel();
 		labelBG.setIcon(new ImageIcon(StudentView.class.getClassLoader().getResource("images/stuView.png")));
-		frame.getContentPane().add(labelBG,BorderLayout.CENTER);
+		frame.getContentPane().add(labelBG, BorderLayout.CENTER);
 		frame.pack();
 	}
+
 	private void myEvent() {
 		// query person info
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			
+
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode mtNode=(DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				DefaultMutableTreeNode mtNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				if (mtNode.isLeaf()) {
-					// 
-					String selectNode=mtNode.getUserObject().toString();
+					//
+					String selectNode = mtNode.getUserObject().toString();
 					if (selectNode.equals(tnSelectPersonInfo.getUserObject().toString())) {
-						// 
-						if (scrollPane!=null) {
+						//
+						if (scrollPane != null) {
 							frame.remove(scrollPane);
 						}
-						// 
-						rstmSelectPersonInfo=new ResultSetTableModel(rsPersonInfo);
-						// 
-						table=new JTable();
-						// 
+						//
+						rstmSelectPersonInfo = new ResultSetTableModel(rsPersonInfo);
+						//
+						table = new JTable();
+						//
 						table.setModel(rstmSelectPersonInfo);
-						// 
-						scrollPane=new JScrollPane(table);
+						//
+						scrollPane = new JScrollPane(table);
 						scrollPane.setViewportView(table);
-						// 
-						frame.getContentPane().add(scrollPane,BorderLayout.SOUTH);
+						//
+						frame.getContentPane().add(scrollPane, BorderLayout.SOUTH);
 						frame.pack();
 						frame.setVisible(true);
 						System.out.println(tnSelectPersonInfo.getUserObject().toString());
-						// 
-						// 
-						
+						//
+						//
+
 					}
 				}
 			}
 		});
 		// course info query
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			
+
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode mtNode=(DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				DefaultMutableTreeNode mtNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				if (mtNode.isLeaf()) {
-					// 
-					String selectNode=mtNode.getUserObject().toString();
+					//
+					String selectNode = mtNode.getUserObject().toString();
 					if (selectNode.equals(tnSelectCoursePlan.getUserObject().toString())) {
-						// 
-						if (scrollPane!=null) {
+						//
+						if (scrollPane != null) {
 							frame.remove(scrollPane);
 						}
-						// 
-						rstmSelectCourPlan=new ResultSetTableModel(rsCourPlan);
-						// 
-						table=new JTable();
-						// 
+						//
+						rstmSelectCourPlan = new ResultSetTableModel(rsCourPlan);
+						//
+						table = new JTable();
+						//
 						table.setModel(rstmSelectCourPlan);
-						// 
-						scrollPane=new JScrollPane(table);
+						//
+						scrollPane = new JScrollPane(table);
 						scrollPane.setBounds(1307, 46, 2, 2);
 						scrollPane.setViewportView(table);
-						// 
-						frame.getContentPane().add(scrollPane,BorderLayout.SOUTH);
+						//
+						frame.getContentPane().add(scrollPane, BorderLayout.SOUTH);
 						frame.pack();
 						frame.setVisible(true);
 						System.out.println(tnSelectCoursePlan.getUserObject().toString());
-						
-			
+
 					}
 				}
 			}
 		});
-		
-		
+
 		// grade info query
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			
+
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode mtNode=(DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				DefaultMutableTreeNode mtNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				if (mtNode.isLeaf()) {
-					// 
-					String selectNode=mtNode.getUserObject().toString();
+					//
+					String selectNode = mtNode.getUserObject().toString();
 					if (selectNode.equals(tnSelectGrade.getUserObject().toString())) {
-						// 
-						if (scrollPane!=null) {
+						//
+						if (scrollPane != null) {
 							frame.remove(scrollPane);
 						}
-						// 
-						rstmSelectGrade=new ResultSetTableModel(rsGrade);
-						// 
-						table=new JTable();
-						// 
+						//
+						rstmSelectGrade = new ResultSetTableModel(rsGrade);
+						//
+						table = new JTable();
+						//
 						table.setModel(rstmSelectGrade);
-						// 
-						scrollPane=new JScrollPane(table);
+						//
+						scrollPane = new JScrollPane(table);
 						scrollPane.setViewportView(table);
-						// 
-						frame.getContentPane().add(scrollPane,BorderLayout.SOUTH);
+						//
+						frame.getContentPane().add(scrollPane, BorderLayout.SOUTH);
 						frame.pack();
 						frame.setVisible(true);
 						System.out.println(tnSelectGrade.getUserObject().toString());
-						
-						
+
 					}
 				}
 			}
 		});
-		
-		// modify password 
+
+		// modify password
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			
+
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode mtNode=(DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				DefaultMutableTreeNode mtNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				if (mtNode.isLeaf()) {
-					// 
-					String selectNode=mtNode.getUserObject().toString();
+					//
+					String selectNode = mtNode.getUserObject().toString();
 					if (selectNode.equals(tnModifyPasswd.getUserObject().toString())) {
-						// 
-						ModifyPasswordView modifyPasswordView=new ModifyPasswordView();
+						//
+						ModifyPasswordView modifyPasswordView = new ModifyPasswordView(account);
 						modifyPasswordView.setVisible(true);
 						modifyPasswordView.setLocationRelativeTo(null);
-						
+
 						System.out.println(tnModifyPasswd.getUserObject().toString());
-						
-						
+
 					}
 				}
 			}
 		});
-		
+
 	}
-	
+
 }

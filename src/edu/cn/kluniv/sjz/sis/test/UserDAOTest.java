@@ -17,7 +17,7 @@ public class UserDAOTest {
 		dbc.connect();
 		UserDAO userDAO=new UserDAO(dbc);
 //		User user=new User(null, null, userRoleAdmin);
-		ResultSet rs=userDAO.selectByNo("");
+		ResultSet rs=userDAO.selectByNo("superuser");
 		System.out.printf("账号  |  密码 | 权限\n");
 		try {
 			while (rs.next()) {
@@ -64,8 +64,8 @@ public class UserDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		UserDAO userDAO=new UserDAO(dbc);
-		String no="2007001";
-		User user=new User("2007001", "123456", userRoleTeacher);
+		String no="2020101";
+		User user=new User("2020101", "123456", userRoleStudent);
 		userDAO.update(user, no);
 		dbc.close();
 	}
@@ -74,7 +74,7 @@ public class UserDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		UserDAO userDAO=new UserDAO(dbc);
-		String no="2007001";
+		String no="001";
 		userDAO.delete(no);
 		dbc.close();
 	}
@@ -113,6 +113,12 @@ public class UserDAOTest {
 	}
 	
 	public static void main(String[] args) {
-		
+//		insert(); // 通过
+//		GenerateUserInfo();// 通过
+//		selectByNo();// 通过
+		selectAll();// 通过
+//		selectByAccountAndPwd();// 通过
+//		delete();// 通过
+//		update();// 通过
 	}
 }

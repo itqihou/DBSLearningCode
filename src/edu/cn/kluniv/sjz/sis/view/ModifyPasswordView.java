@@ -53,11 +53,11 @@ public class ModifyPasswordView extends JFrame {
 	 */
 	public ModifyPasswordView(String account) {
 		account1 = account;
-		setTitle("\u5BC6\u7801\u66F4\u6539");
+		setTitle("修改密码");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.CYAN);
+		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
 		setContentPane(contentPane);
 
@@ -88,7 +88,7 @@ public class ModifyPasswordView extends JFrame {
 		lblNewLabel_2.setBackground(Color.BLUE);
 		lblNewLabel_2.setFont(new Font("楷体", Font.PLAIN, 19));
 
-		JButton ConfirmButton = new JButton("\u786E\u8BA4");
+		JButton ConfirmButton = new JButton("确认");
 
 		ConfirmButton.setBackground(Color.CYAN);
 		ConfirmButton.setFont(new Font("楷体", Font.PLAIN, 19));
@@ -99,12 +99,12 @@ public class ModifyPasswordView extends JFrame {
 			}
 		});
 
-		JButton ReseButton = new JButton("\u91CD\u7F6E");
+		JButton ResetButton = new JButton("\u91CD\u7F6E");
 
-		ReseButton.setBackground(Color.RED);
-		ReseButton.setFont(new Font("楷体", Font.PLAIN, 19));
+		ResetButton.setBackground(Color.RED);
+		ResetButton.setFont(new Font("楷体", Font.PLAIN, 19));
 		// 监听重置按钮
-		ReseButton.addActionListener(new ActionListener() {
+		ResetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				resetValue(evt);
 			}
@@ -129,7 +129,7 @@ public class ModifyPasswordView extends JFrame {
 												.addGap(128))
 										.addGroup(Alignment.TRAILING,
 												gl_contentPane.createSequentialGroup().addComponent(ConfirmButton)
-														.addGap(63).addComponent(ReseButton).addGap(101)))));
+														.addGap(63).addComponent(ResetButton).addGap(101)))));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addGap(36)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addComponent(lblNewLabel).addComponent(
@@ -145,7 +145,7 @@ public class ModifyPasswordView extends JFrame {
 						.addComponent(confirmPasswordtextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_2))
-				.addGap(36).addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(ReseButton)
+				.addGap(36).addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(ResetButton)
 						.addComponent(ConfirmButton))
 				.addContainerGap(35, Short.MAX_VALUE)));
 		contentPane.setLayout(gl_contentPane);
@@ -157,7 +157,49 @@ public class ModifyPasswordView extends JFrame {
 	}
 
 	public ModifyPasswordView() {
-		// TODO Auto-generated constructor stub
+		setTitle("修改密码");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.GRAY);
+		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
+		setContentPane(contentPane);
+
+		oldPasswordtextField = new JTextField();
+		oldPasswordtextField.setColumns(10);
+
+		newPasswordtextField = new JTextField();
+		newPasswordtextField.setColumns(10);
+
+		confirmPasswordtextField = new JTextField();
+		confirmPasswordtextField.setColumns(10);
+
+		JLabel lblNewLabel = new JLabel("\u65E7\u5BC6\u7801");
+		lblNewLabel.setForeground(Color.BLACK);
+
+		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 19));
+		lblNewLabel.setBackground(Color.BLUE);
+
+		JLabel lblNewLabel_1 = new JLabel("\u65B0\u5BC6\u7801");
+		lblNewLabel_1.setForeground(Color.BLACK);
+
+		lblNewLabel_1.setBackground(Color.BLUE);
+		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 19));
+
+		JLabel lblNewLabel_2 = new JLabel("\u786E\u8BA4\u5BC6\u7801");
+		lblNewLabel_2.setForeground(Color.BLACK);
+
+		lblNewLabel_2.setBackground(Color.BLUE);
+		lblNewLabel_2.setFont(new Font("楷体", Font.PLAIN, 19));
+
+		JButton ConfirmButton = new JButton("确认");
+
+		ConfirmButton.setBackground(Color.CYAN);
+		ConfirmButton.setFont(new Font("楷体", Font.PLAIN, 19));
+		JButton ResetButton = new JButton("\u91CD\u7F6E");
+
+		ResetButton.setBackground(Color.RED);
+		ResetButton.setFont(new Font("楷体", Font.PLAIN, 19));
 	}
 
 	protected void confirmPasswordValue(ActionEvent evt) {

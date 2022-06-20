@@ -18,28 +18,26 @@ public class SCDAO implements BaseDAO<SC> {
 	private String sqlUpdate = "UPDATE [SJZ].Student SET sno=?,cno=?,tname=?,grade=?,term=? WHERE sno=?";
 	private String sqlSelectAll = "SELECT * FROM [SJZ].SC";
 	private String sqlSelectByNo = "SELECT SC.cno,Course.cname,SC.grade,SC.term "
-	  		+ "FROM [SJZ].SC INNER JOIN  [SJZ].Student"
-	  		+ "ON [SJZ].SC.sno = [SJZ].Student.sno INNER JOIN [SJZ].Course "
-	  		+ "ON [SJZ].SC.cno = [SJZ].Course.cno "
-	      + "WHERE [SJZ].SC.sno=?";
-	private String sqlSelectByTeaNo ="SELECT DISTINCT SC.cno,SC.sno,Student.sname,SC.grade,SC.term "
-	  		+ "FROM [SJZ].Course INNER JOIN [SJZ].SC "
-	  		+ "ON SC.cno=Course.cno INNER JOIN [SJZ].Teacher "
-	  		+ "ON SC.tname=Teacher.tname INNER JOIN [SJZ].Student "
-	  		+ "ON SC.sno=Student.sno "
-	        + "WHERE Teacher.tno=?";
-	
-	
-	
+			+ "FROM [SJZ].SC INNER JOIN  [SJZ].Student " 
+			+ "ON [SJZ].SC.sno = [SJZ].Student.sno INNER JOIN [SJZ].Course "
+			+ "ON [SJZ].SC.cno = [SJZ].Course.cno " 
+			+ "WHERE [SJZ].SC.sno=?";
+	private String sqlSelectByTeaNo = "SELECT DISTINCT SC.cno,SC.sno,Student.sname,SC.grade,SC.term "
+			+ "FROM [SJZ].Course INNER JOIN [SJZ].SC " 
+			+ "ON SC.cno=Course.cno INNER JOIN [SJZ].Teacher "
+			+ "ON SC.tname=Teacher.tname INNER JOIN [SJZ].Student " 
+			+ "ON SC.sno=Student.sno " 
+			+ "WHERE Teacher.tno=?";
+
 	public SCDAO(DBConnection dbc) {
 		this.dbc = dbc;
-		conn=dbc.getConnection();
+		conn = dbc.getConnection();
 	}
 
 	@Override
 	public void insert(SC scEntity) {
-		try {			
-			ps=conn.prepareStatement(sqlInsert, 
+		try {
+			ps = conn.prepareStatement(sqlInsert, 
 					ResultSet.TYPE_SCROLL_SENSITIVE, 
 					ResultSet.CONCUR_UPDATABLE);
 			ps.setObject(1, scEntity.getSno());
@@ -55,7 +53,7 @@ public class SCDAO implements BaseDAO<SC> {
 	@Override
 	public void delete(String sno) {
 		try {
-			ps=conn.prepareStatement(sqlDelete, 
+			ps = conn.prepareStatement(sqlDelete, 
 					ResultSet.TYPE_SCROLL_SENSITIVE, 
 					ResultSet.CONCUR_UPDATABLE);
 			ps.setObject(1, sno);
@@ -68,7 +66,7 @@ public class SCDAO implements BaseDAO<SC> {
 	@Override
 	public void update(SC scEntity, String sno) {
 		try {
-			ps=conn.prepareStatement(sqlUpdate, 
+			ps = conn.prepareStatement(sqlUpdate, 
 					ResultSet.TYPE_SCROLL_SENSITIVE, 
 					ResultSet.CONCUR_UPDATABLE);
 			ps.setObject(1, scEntity.getSno());
@@ -86,12 +84,12 @@ public class SCDAO implements BaseDAO<SC> {
 	@Override
 	public ResultSet selectByNo(String sno) {
 		try {
-			ps=conn.prepareStatement(sqlSelectByNo, 
+			ps = conn.prepareStatement(sqlSelectByNo, 
 					ResultSet.TYPE_SCROLL_INSENSITIVE, 
 					ResultSet.CONCUR_READ_ONLY);
 			ps.setObject(1, sno);
-			rs=ps.executeQuery();
-			rs.beforeFirst();
+			rs = ps.executeQuery();
+//			rs.beforeFirst();
 			return rs;
 		} catch (SQLException e) {
 			System.out.println("SCDAO.select data failed!");
@@ -103,30 +101,24 @@ public class SCDAO implements BaseDAO<SC> {
 	@Override
 	public ResultSet selectAll(int role) {
 		try {
-			if (role==BaseDAO.userRoleAdmin) {
-				ps=conn.prepareStatement(sqlSelectAll, 
-						ResultSet.TYPE_SCROLL_SENSITIVE, 
-						ResultSet.CONCUR_UPDATABLE);
-			} else if (role==BaseDAO.userRoleStudent||role==BaseDAO.userRoleTeacher) {
-				ps=conn.prepareStatement(sqlSelectAll, 
-						ResultSet.TYPE_SCROLL_INSENSITIVE, 
-						ResultSet.CONCUR_READ_ONLY);
+			if (role == BaseDAO.userRoleAdmin) {
+				ps = conn.prepareStatement(sqlSelectAll, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			} else if (role == BaseDAO.userRoleStudent || role == BaseDAO.userRoleTeacher) {
+				ps = conn.prepareStatement(sqlSelectAll, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			}
-			rs=ps.executeQuery();
+			rs = ps.executeQuery();
 			return rs;
 		} catch (SQLException e) {
 			System.out.println("SCDAO.select All data failed!");
 		}
 		return null;
 	}
-	
+
 	public ResultSet selectByTeaNo(String tno) {
 		try {
-			ps=conn.prepareStatement(sqlSelectByTeaNo, 
-					ResultSet.TYPE_SCROLL_INSENSITIVE, 
-					ResultSet.CONCUR_READ_ONLY);
+			ps = conn.prepareStatement(sqlSelectByTeaNo, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ps.setObject(1, tno);
-			rs=ps.executeQuery();
+			rs = ps.executeQuery();
 			rs.beforeFirst();
 			return rs;
 		} catch (SQLException e) {

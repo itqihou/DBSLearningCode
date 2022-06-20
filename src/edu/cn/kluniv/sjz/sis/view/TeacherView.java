@@ -127,7 +127,7 @@ public class TeacherView {
 					String selectNode = mtNode.getUserObject().toString();
 					if (selectNode.equals(tnModifyPasswd.getUserObject().toString())) {
 						//
-						ModifyPasswordView modifyPasswordView = new ModifyPasswordView();
+						ModifyPasswordView modifyPasswordView = new ModifyPasswordView(account);
 						modifyPasswordView.setVisible(true);
 						modifyPasswordView.setLocationRelativeTo(null);
 

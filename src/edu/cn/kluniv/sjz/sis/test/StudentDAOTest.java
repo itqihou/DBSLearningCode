@@ -14,7 +14,7 @@ public class StudentDAOTest {
 		dbc.connect();
 		StudentDAO stuDAO=new StudentDAO(dbc);
 //		User user=new User(null, null, userRoleAdmin);
-		ResultSet rs=stuDAO.selectByNo("");
+		ResultSet rs=stuDAO.selectByNo("2017001");
 		System.out.printf("学号  |  姓名 | 性别  | 年龄 | 系别\n");
 		try {
 			while (rs.next()) {
@@ -30,7 +30,7 @@ public class StudentDAOTest {
 		dbc.close();
 	}
 	
-	public static void selectAll() throws SQLException {
+	public static void selectAll()  {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		StudentDAO stuDAO=new StudentDAO(dbc);
@@ -49,7 +49,12 @@ public class StudentDAOTest {
 			e.printStackTrace();
 		}finally {
 			if (rs!=null) {
-				rs.close();
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if (dbc!=null) {
 				dbc.close();
@@ -90,7 +95,7 @@ public class StudentDAOTest {
 		dbc.connect();
 		StudentDAO stuDAO=new StudentDAO(dbc);
 //		User user=new User(null, null, userRoleAdmin);
-		ResultSet rs=stuDAO.selectByDept("");
+		ResultSet rs=stuDAO.selectByDept("物联网");
 		System.out.printf("学号  |  姓名 | 性别  | 年龄 | 系别\n");
 		try {
 			while (rs.next()) {
@@ -111,7 +116,7 @@ public class StudentDAOTest {
 		dbc.connect();
 		StudentDAO stuDAO=new StudentDAO(dbc);
 //		User user=new User(null, null, userRoleAdmin);
-		ResultSet rs=stuDAO.selectBySex("");
+		ResultSet rs=stuDAO.selectBySex("女");
 		System.out.printf("学号  |  姓名 | 性别  | 年龄 | 系别\n");
 		try {
 			while (rs.next()) {
@@ -127,7 +132,13 @@ public class StudentDAOTest {
 		dbc.close();
 	}	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//		selectAll();// 通过
+//		selectByNo(); // 通过
+//		insert();// 通过
+//		update();// 通过
+//		selectByDept();// 通过
+//		selectBySex();// 通过
+//		delete();// 通过
 	}
 
 }
