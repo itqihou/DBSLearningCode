@@ -157,7 +157,7 @@ public class LoginView {
 	private void initialize() {
 		// 添加frame
 		frame = new JFrame();
-		frame.setTitle("Student Infomation Management System");
+		frame.setTitle("学生信息管理系统");
 		frame.setBounds(100, 100, 891, 444);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
