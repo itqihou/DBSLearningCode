@@ -92,7 +92,7 @@ public class StudentView {
 		frame.getContentPane().add(tree,BorderLayout.WEST);
 		// 
 		labelBG=new JLabel();
-		labelBG.setIcon(new ImageIcon(""));
+		labelBG.setIcon(new ImageIcon(StudentView.class.getClassLoader().getResource("images/stuView.png")));
 		frame.getContentPane().add(labelBG,BorderLayout.CENTER);
 		frame.pack();
 	}

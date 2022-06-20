@@ -7,6 +7,9 @@ public class LoginViewTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new LoginView();
+//		System.out.println(LoginViewTest.class
+//				.getClassLoader()
+//				.getResource("images/loginView.png"));
 	}
 
 }

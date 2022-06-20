@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -36,6 +39,9 @@ public class LoginView {
 	private JButton btnLogin;
 	private String account;
 	private String passwd;
+	private JMenuBar menuBar;
+	private JMenu helpMenu;
+	private JMenuItem aboutPage;
 	/**
 	 * 以上是GUI控件
 	 */
@@ -136,6 +142,16 @@ public class LoginView {
 				}
 			}
 		});
+		
+		// si huo
+		aboutPage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AboutPage aboutPage=new AboutPage();
+				aboutPage.setVisible(true);
+			}
+		});
 	}
 
 	private void initialize() {
@@ -146,6 +162,13 @@ public class LoginView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
+		// 塞点私货
+		menuBar=new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		helpMenu = new JMenu("Help");
+		menuBar.add(helpMenu);
+		aboutPage = new JMenuItem("About");
+		helpMenu.add(aboutPage);
 		//
 		panel = new JPanel();
 		panel.setBounds(0, 0, 875, 405);
@@ -181,7 +204,7 @@ public class LoginView {
 		panel.add(labelGroupMemberDescription);
 		//
 		labelBg = new JLabel();
-		labelBg.setIcon(new ImageIcon(""));
+		labelBg.setIcon(new ImageIcon(LoginView.class.getClassLoader().getResource("images/loginView.png")));
 		labelBg.setBounds(0, 0, 875, 405);
 		panel.add(labelBg);
 		//
