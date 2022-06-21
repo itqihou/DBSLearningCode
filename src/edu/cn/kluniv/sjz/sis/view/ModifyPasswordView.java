@@ -70,19 +70,19 @@ public class ModifyPasswordView extends JFrame {
 		confirmPasswordtextField = new JTextField();
 		confirmPasswordtextField.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("\u65E7\u5BC6\u7801");
+		JLabel lblNewLabel = new JLabel("旧密码");
 		lblNewLabel.setForeground(Color.BLACK);
 
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 19));
 		lblNewLabel.setBackground(Color.BLUE);
 
-		JLabel lblNewLabel_1 = new JLabel("\u65B0\u5BC6\u7801");
+		JLabel lblNewLabel_1 = new JLabel("新密码");
 		lblNewLabel_1.setForeground(Color.BLACK);
 
 		lblNewLabel_1.setBackground(Color.BLUE);
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 19));
 
-		JLabel lblNewLabel_2 = new JLabel("\u786E\u8BA4\u5BC6\u7801");
+		JLabel lblNewLabel_2 = new JLabel("确认密码");
 		lblNewLabel_2.setForeground(Color.BLACK);
 
 		lblNewLabel_2.setBackground(Color.BLUE);
@@ -99,7 +99,7 @@ public class ModifyPasswordView extends JFrame {
 			}
 		});
 
-		JButton ResetButton = new JButton("\u91CD\u7F6E");
+		JButton ResetButton = new JButton("重置");
 
 		ResetButton.setBackground(Color.RED);
 		ResetButton.setFont(new Font("楷体", Font.PLAIN, 19));
@@ -174,19 +174,19 @@ public class ModifyPasswordView extends JFrame {
 		confirmPasswordtextField = new JTextField();
 		confirmPasswordtextField.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("\u65E7\u5BC6\u7801");
+		JLabel lblNewLabel = new JLabel("旧密码");
 		lblNewLabel.setForeground(Color.BLACK);
 
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 19));
 		lblNewLabel.setBackground(Color.BLUE);
 
-		JLabel lblNewLabel_1 = new JLabel("\u65B0\u5BC6\u7801");
+		JLabel lblNewLabel_1 = new JLabel("新密码");
 		lblNewLabel_1.setForeground(Color.BLACK);
 
 		lblNewLabel_1.setBackground(Color.BLUE);
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 19));
 
-		JLabel lblNewLabel_2 = new JLabel("\u786E\u8BA4\u5BC6\u7801");
+		JLabel lblNewLabel_2 = new JLabel("确认密码");
 		lblNewLabel_2.setForeground(Color.BLACK);
 
 		lblNewLabel_2.setBackground(Color.BLUE);
@@ -196,7 +196,7 @@ public class ModifyPasswordView extends JFrame {
 
 		ConfirmButton.setBackground(Color.CYAN);
 		ConfirmButton.setFont(new Font("楷体", Font.PLAIN, 19));
-		JButton ResetButton = new JButton("\u91CD\u7F6E");
+		JButton ResetButton = new JButton("重置");
 
 		ResetButton.setBackground(Color.RED);
 		ResetButton.setFont(new Font("楷体", Font.PLAIN, 19));
