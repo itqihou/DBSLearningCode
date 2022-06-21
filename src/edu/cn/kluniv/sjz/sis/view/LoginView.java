@@ -110,8 +110,9 @@ public class LoginView {
 								frame.dispose();
 								//
 								stuView = new StudentView(studentDAO.selectByNo(user.getAccount()),
+										scDAO.selectByNo(user.getAccount()),
 										courseDAO.selectAll(BaseDAO.userRoleStudent),
-										scDAO.selectByNo(user.getAccount()), user.getAccount());
+										 user.getAccount());
 
 							}
 							//
@@ -119,8 +120,10 @@ public class LoginView {
 								//
 								frame.dispose();
 								//
-								teaView = new TeacherView(courseDAO.selectAll(BaseDAO.userRoleTeacher),
-										scDAO.selectByNo(user.getAccount()), user.getAccount());
+								teaView = new TeacherView(
+										scDAO.selectByTeaNo(user.getAccount()),
+										courseDAO.selectAll(BaseDAO.userRoleTeacher),
+										 user.getAccount());
 							}
 							//
 							if (user.getRole() == BaseDAO.userRoleAdmin) {

@@ -143,15 +143,15 @@ public class ResultSetTableModel extends AbstractTableModel {
 		int rowInserted=getRowCount()+1;
 		try {
 			rs.moveToInsertRow();
-			rs.updateString("cno", "001");
+			rs.updateString("cno", "000");
 			rs.updateString("cname", "´ý²åÈë");
-			rs.updateString("tno", "002");			
-			rs.updateString("cpno", "´ý²åÈë");
+			rs.updateString("tno", "2006010");			
+			rs.updateString("cpno", "000");
 			rs.updateInt("ccredit", 3);
 			rs.insertRow();
 			fireTableRowsInserted(rowInserted, rowInserted);
 		} catch (SQLException e) {
-			System.out.println("ResultSetTableModel:insertRowStudent failed!");
+			System.out.println("ResultSetTableModel:insertRowCourse failed!");
 			e.printStackTrace();
 		}
 	}

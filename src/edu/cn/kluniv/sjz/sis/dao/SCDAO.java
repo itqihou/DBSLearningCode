@@ -119,7 +119,7 @@ public class SCDAO implements BaseDAO<SC> {
 			ps = conn.prepareStatement(sqlSelectByTeaNo, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ps.setObject(1, tno);
 			rs = ps.executeQuery();
-			rs.beforeFirst();
+//			rs.beforeFirst();
 			return rs;
 		} catch (SQLException e) {
 			System.out.println("SCDAO.select data failed!");

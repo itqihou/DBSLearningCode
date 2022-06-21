@@ -1,13 +1,20 @@
 package edu.cn.kluniv.sjz.sis.view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTree;
@@ -32,6 +39,10 @@ public class AdministratorView {
 	private JLabel labelBG;
 	private JScrollPane scrollPane;
 	private JTable table;
+	private JMenuBar menuBar;
+	private JMenu logMenu;
+	private JMenuItem logout;
+	
 	private ResultSetTableModel rstmSelectStuInfo;
 	private ResultSetTableModel rstmSelectTeaInfo;
 	private ResultSetTableModel rstmSelectCourPlan;
@@ -48,7 +59,7 @@ public class AdministratorView {
 		frame.setLocationRelativeTo(null);
 	}
 	private void myEvent() {
-		// TODO Auto-generated method stub
+		// student
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
 			
 			@Override
@@ -150,7 +161,7 @@ public class AdministratorView {
 							@Override
 							public void keyPressed(KeyEvent e) {
 								if (e.getKeyCode()==KeyEvent.VK_INSERT) {
-									rstmSelectTeaInfo.insertRowStudent();
+									rstmSelectTeaInfo.insertRowTeacher();
 								}
 							}
 							
@@ -207,13 +218,24 @@ public class AdministratorView {
 							@Override
 							public void keyPressed(KeyEvent e) {
 								if (e.getKeyCode()==KeyEvent.VK_INSERT) {
-									rstmSelectCourPlan.insertRowStudent();
+									rstmSelectCourPlan.insertRowCourse();
 								}
 							}
 							
 						});
 					}
 				}
+			}
+		});
+		
+		// si huo
+		logout.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose();
+				JOptionPane.showMessageDialog(null, "已经成功注销登录!", "注销登录通知!", 1, null);
 			}
 		});
 		
@@ -224,6 +246,13 @@ public class AdministratorView {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(10, 10));
+		// 塞点私货
+		menuBar=new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		logMenu = new JMenu("Logout");
+		menuBar.add(logMenu);
+		logout = new JMenuItem("退出登录");
+		logMenu.add(logout);
 		// 
 		tree=new JTree();
 		tree.getSelectionModel()
@@ -245,7 +274,11 @@ public class AdministratorView {
 		// 
 		tree.setModel(treeModel);
 		// 
-		frame.getContentPane().add(tree,BorderLayout.CENTER);
+		frame.getContentPane().add(tree,BorderLayout.WEST);
+		//
+		labelBG = new JLabel();
+		labelBG.setIcon(new ImageIcon(AdministratorView.class.getClassLoader().getResource("images/stuView.png")));
+		frame.getContentPane().add(labelBG, BorderLayout.CENTER);
 		frame.pack();
 	}
 	
