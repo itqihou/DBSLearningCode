@@ -51,6 +51,7 @@ public class StudentDAO implements BaseDAO<Student> {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("StudentDAO.insert failed!!");
+			e.printStackTrace();
 		}
 	}
 

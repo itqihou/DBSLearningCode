@@ -65,7 +65,7 @@ public class TeacherDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		TeacherDAO teaDAO=new TeacherDAO(dbc);
-		Teacher tea=new Teacher("2020001", "纪晓岚", "男", 24, "光电");
+		Teacher tea=new Teacher("2010011", "曹操", "男", 24, "物联网");
 		teaDAO.insert(tea);
 		dbc.close();
 	}
@@ -73,9 +73,9 @@ public class TeacherDAOTest {
 	public static void update() {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
-		String no="2020001";
+		String no="2010011";
 		TeacherDAO teaDAO=new TeacherDAO(dbc);
-		Teacher tea=new Teacher("2020001", "纪晓岚", "男", 24, "物联网");
+		Teacher tea=new Teacher("2010011", "水镜先生", "男", 26, "物联网");
 		teaDAO.update(tea,no);
 		dbc.close();
 	}
@@ -93,7 +93,6 @@ public class TeacherDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		TeacherDAO teaDAO=new TeacherDAO(dbc);
-//		User user=new User(null, null, userRoleAdmin);
 		ResultSet rs=teaDAO.selectByDept("物联网");
 		System.out.printf("工号  |  姓名 | 性别  | 年龄 | 系别\n");
 		try {
@@ -114,7 +113,7 @@ public class TeacherDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		TeacherDAO teaDAO=new TeacherDAO(dbc);
-		ResultSet rs=teaDAO.selectBySex("女");
+		ResultSet rs=teaDAO.selectBySex("男");
 		System.out.printf("工号  |  姓名 | 性别  | 年龄 | 系别\n");
 		try {
 			while (rs.next()) {
@@ -131,7 +130,9 @@ public class TeacherDAOTest {
 	}
 	public static void main(String[] args) {
 //		selectByNo();// 通过
-		selectAll();
+//		selectAll();// 通过
+//		selectBySex();// 通过
+//		selectByDept();// 通过
 	}
 
 }

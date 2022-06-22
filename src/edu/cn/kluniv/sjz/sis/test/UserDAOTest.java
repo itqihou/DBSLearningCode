@@ -74,7 +74,7 @@ public class UserDAOTest {
 		DBConnection dbc=new DBConnection();
 		dbc.connect();
 		UserDAO userDAO=new UserDAO(dbc);
-		String no="001";
+		String no="superuser";
 		userDAO.delete(no);
 		dbc.close();
 	}
